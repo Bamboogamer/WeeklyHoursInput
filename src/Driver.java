@@ -51,11 +51,7 @@ public class Driver {
         * 11 - Tuesday
         *
         * */
-        int[] dayIndexes = {
-                0, 1, 2,
-                5, 6, 7, 8, 9,
-                12, 13
-        };
+        int[] dayIndexes = { 0 }; // ENTER YOUR WORK DAYS HERE
 
         // Hours Worked For Given Days
         /*
@@ -64,11 +60,7 @@ public class Driver {
         * Indexes of dayIndexes and dayHours must match for automation script to work properly.
         *
         * */
-        int[] dayHours_ = {
-                7, 2, 2,
-                7, 2, 7, 2, 2,
-                7, 2
-        };
+        int[] dayHours_ = { 0 }; // ENTER CORRESPONDING HOURS FOR DAYS ABOVE HERE
 
         for (int i = 0; i < dayIndexes.length; i++) {
 
