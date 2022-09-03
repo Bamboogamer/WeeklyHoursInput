@@ -8,7 +8,7 @@ public class Driver {
 
     // TODO: CHANGE THESE ==============================================================================================
     private final static String chromeDriverPath = "[PATH TO THIS PROJECT]\\driver\\chrome-driver-105.exe";
-    private final static String username = "[YOUR USER HERE]"; 
+    private final static String username = "[YOUR USER HERE]";
     private final static String password = "[YOUR PASSWORD HERE]";
     // TODO: CHANGE THESE ==============================================================================================
 
@@ -55,23 +55,24 @@ public class Driver {
          * 11 - Tuesday
          *
          * */
-        int[] dayIndexes = { 0 };
+        int[] daysWorked = { 0 };
 
         //
         /* ===== Hours Worked ===== TODO: CHANGE THIS ARRAY FOR YOUR SPECIFIC SCHEDULE
-         * Total size of list - NOT the total of combined hours - must match the size of dayIndexes list.
+         * Total size of list -- NOT the total of combined hours -- must match the size of daysWorked list.
          *
-         * Indexes of dayIndexes and dayHours must match for automation script to work properly.
+         * Enter your hours to match the indexes of your days worked. Indexes of both arrays should match for script
+         * to work properly.
          *
          * */
-        int[] dayHours_ = { 0 };
+        int[] hoursWorked = { 0 };
 
-        for (int i = 0; i < dayIndexes.length; i++) {
+        for (int i = 0; i < daysWorked.length; i++) {
 
             // Begin Adding Time before submitting
             driver.findElement(By.xpath("//*[@id=\"addTime\"]")).click();
             Select date = new Select(driver.findElement(By.xpath("//*[@id=\"date\"]")));
-            date.selectByIndex(dayIndexes[i]);
+            date.selectByIndex(daysWorked[i]);
 
             // Always select Midnight first
             Select startTime = new Select(driver.findElement(By.xpath("//*[@id=\"startTime\"]")));
@@ -79,7 +80,7 @@ public class Driver {
 
             // Select correct endTime to match hours worked for this day
             Select endTime = new Select(driver.findElement(By.xpath("//*[@id=\"endTime\"]")));
-            endTime.selectByVisibleText(String.format("%d:00 AM", dayHours_[i]));
+            endTime.selectByVisibleText(String.format("%d:00 AM", hoursWorked[i]));
 
             // Add "Work" into comments
             WebElement comment = driver.findElement(By.xpath("//*[@id=\"comments\"]"));
