@@ -55,7 +55,7 @@ public class Driver {
          * 11 - Tuesday
          *
          * */
-        int[] daysWorked = { 0 };
+        int[] daysWorked = { 0,1,2,5,6,7,8,9,10,11 };
 
         //
         /* ===== Hours Worked ===== TODO: CHANGE THIS ARRAY FOR YOUR SPECIFIC SCHEDULE
@@ -65,7 +65,7 @@ public class Driver {
          * to work properly.
          *
          * */
-        int[] hoursWorked = { 0 };
+        int[] hoursWorked = { 7,2,2,7,2,7,2,2,7,2 };
 
         for (int i = 0; i < daysWorked.length; i++) {
 
@@ -88,6 +88,27 @@ public class Driver {
 
             // Add hours
             driver.findElement(By.xpath("//*[@id=\"timeSaveOrAddId\"]")).click();
+
+            // --- Special cases --- //
+
+            // Holiday hours
+            if (driver.getPageSource().contains("Time has been entered on a holiday. Is that accurate?")){
+                System.out.println("DAY IS A HOLIDAY, MANUALLY CHECK THIS DATE");
+                driver.findElement(By.xpath("//*[@id=\"addTimeWorkedWarningForm\"]/div[6]/div[2]/button[2]")).click();
+                driver.findElement(By.xpath("//*[@id=\"addTimeWorkedForm\"]/div[6]/div[2]/button[2]")).click();
+            }
+
+            // Ten or more hours
+            else if (driver.getPageSource().contains("Ten or more hours have been reported for this day.")) {
+                System.out.println("OVER 10 HOURS ENTERED, SUBMITTING HOURS ANYWAY");
+                driver.findElement(By.xpath("//*[@id=\"continueId\"]")).click();
+            }
+
+            // Overlapping hours
+            else if(driver.getPageSource().contains("overlaps with an existing time")){
+                System.out.println("EXISTING TIME ALREADY ADDED, SKIPPING ENTERING THIS DATE'S HOURS");
+                driver.findElement(By.xpath("//*[@id=\"addTimeWorkedForm\"]/div[6]/div[2]/button[2]")).click();
+            }
         }
 //        // Wait 30 seconds to allow user to Certify and Submit the hours
 //        driver.wait(15000);
