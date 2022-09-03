@@ -12,7 +12,6 @@ public class Driver {
     private final static String password = "[YOUR PASSWORD HERE]";
     // TODO: CHANGE THESE ==============================================================================================
 
-
     private final static String loginButton_Xpath = "//*[@id=\"loginTable\"]/tbody/tr[5]/td[2]/input";
     private final static String studentEmploymentLink_Xpath = "//*[@id=\"app-links\"]/ul/li[9]/a";
     private final static String enterTimeWorkedLink_Xpath = "//*[@id=\"main\"]/div[6]/a";
@@ -51,11 +50,11 @@ public class Driver {
          * 7  - Wednesday
          * 8  - Thursday
          * 9  - Friday
-         * 10 - Monday
-         * 11 - Tuesday
+         * 12 - Monday
+         * 13 - Tuesday
          *
          * */
-        int[] daysWorked = { 0,1,2,5,6,7,8,9,10,11 };
+        int[] daysWorked = { 0,1,2,5,6,7,8,9,12,13 };
 
         //
         /* ===== Hours Worked ===== TODO: CHANGE THIS ARRAY FOR YOUR SPECIFIC SCHEDULE
@@ -93,20 +92,29 @@ public class Driver {
 
             // Holiday hours
             if (driver.getPageSource().contains("Time has been entered on a holiday. Is that accurate?")){
-                System.out.println("DAY IS A HOLIDAY, MANUALLY CHECK THIS DATE");
-                driver.findElement(By.xpath("//*[@id=\"addTimeWorkedWarningForm\"]/div[6]/div[2]/button[2]")).click();
-                driver.findElement(By.xpath("//*[@id=\"addTimeWorkedForm\"]/div[6]/div[2]/button[2]")).click();
+                System.out.println("DAY IS A HOLIDAY, ADDING HOURS ANYWAY, DOUBLE CHECK BEFORE SUBMITTING");
+
+                WebElement comment_ = driver.findElement(By.xpath("//*[@id=\"comments\"]"));
+                comment_.clear();
+                comment_.sendKeys("Work, HOLIDAY - MANAGER PLEASE DOUBLE CHECK WITH STUDENT");
+
+                driver.findElement(By.xpath("//*[@id=\"continueId\"]")).click();
             }
 
             // Ten or more hours
             else if (driver.getPageSource().contains("Ten or more hours have been reported for this day.")) {
-                System.out.println("OVER 10 HOURS ENTERED, SUBMITTING HOURS ANYWAY");
+                System.out.println("OVER 10 HOURS ENTERED, ADDING HOURS ANYWAY");
+
+                WebElement comment_ = driver.findElement(By.xpath("//*[@id=\"comments\"]"));
+                comment_.clear();
+                comment_.sendKeys("Work, WORKING OVER 10 HOURS");
+
                 driver.findElement(By.xpath("//*[@id=\"continueId\"]")).click();
             }
 
             // Overlapping hours
             else if(driver.getPageSource().contains("overlaps with an existing time")){
-                System.out.println("EXISTING TIME ALREADY ADDED, SKIPPING ENTERING THIS DATE'S HOURS");
+                System.out.println("EXISTING TIME ALREADY ADDED, SKIPPING ADDING THIS DATE'S HOURS");
                 driver.findElement(By.xpath("//*[@id=\"addTimeWorkedForm\"]/div[6]/div[2]/button[2]")).click();
             }
         }
