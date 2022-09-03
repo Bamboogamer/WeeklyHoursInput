@@ -6,9 +6,13 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Driver {
 
+    // TODO: CHANGE THESE ==============================================================================================
     private final static String chromeDriverPath = "[PATH TO THIS PROJECT]\\driver\\chrome-driver-105.exe";
-    private final static String username = "[YOUR USER HERE]";
+    private final static String username = "[YOUR USER HERE]"; 
     private final static String password = "[YOUR PASSWORD HERE]";
+    // TODO: CHANGE THESE ==============================================================================================
+
+
     private final static String loginButton_Xpath = "//*[@id=\"loginTable\"]/tbody/tr[5]/td[2]/input";
     private final static String studentEmploymentLink_Xpath = "//*[@id=\"app-links\"]/ul/li[9]/a";
     private final static String enterTimeWorkedLink_Xpath = "//*[@id=\"main\"]/div[6]/a";
@@ -35,32 +39,32 @@ public class Driver {
         driver.findElement(By.xpath(studentEmploymentLink_Xpath)).click();
         driver.findElement(By.xpath(enterTimeWorkedLink_Xpath)).click();
 
-        /* ====== Date Selection =====
-        * E-services work weeks start from Wednesday to the next week's Tuesday
-        *
-        * Indexes of valid work days in order:
-        * 0  - Wednesday
-        * 1  - Thursday
-        * 2  - Friday
-        * 5  - Monday
-        * 6  - Tuesday
-        * 7  - Wednesday
-        * 8  - Thursday
-        * 9  - Friday
-        * 10 - Monday
-        * 11 - Tuesday
-        *
-        * */
-        int[] dayIndexes = { 0 }; // ENTER YOUR WORK DAYS HERE
+        /* ====== Date Selection ===== TODO: CHANGE THIS ARRAY FOR YOUR SPECIFIC SCHEDULE
+         * E-services work weeks start from Wednesday to the next week's Tuesday
+         *
+         * Indexes of valid work days in order:
+         * 0  - Wednesday
+         * 1  - Thursday
+         * 2  - Friday
+         * 5  - Monday
+         * 6  - Tuesday
+         * 7  - Wednesday
+         * 8  - Thursday
+         * 9  - Friday
+         * 10 - Monday
+         * 11 - Tuesday
+         *
+         * */
+        int[] dayIndexes = { 0 };
 
-        // Hours Worked For Given Days
-        /*
-        * Total size of list - NOT the total of combined hours - must match the size of dayIndexes list.
-        *
-        * Indexes of dayIndexes and dayHours must match for automation script to work properly.
-        *
-        * */
-        int[] dayHours_ = { 0 }; // ENTER CORRESPONDING HOURS FOR DAYS ABOVE HERE
+        //
+        /* ===== Hours Worked ===== TODO: CHANGE THIS ARRAY FOR YOUR SPECIFIC SCHEDULE
+         * Total size of list - NOT the total of combined hours - must match the size of dayIndexes list.
+         *
+         * Indexes of dayIndexes and dayHours must match for automation script to work properly.
+         *
+         * */
+        int[] dayHours_ = { 0 };
 
         for (int i = 0; i < dayIndexes.length; i++) {
 
