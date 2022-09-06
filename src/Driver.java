@@ -15,6 +15,10 @@ public class Driver {
     private final static String loginButton_Xpath = "//*[@id=\"loginTable\"]/tbody/tr[5]/td[2]/input";
     private final static String studentEmploymentLink_Xpath = "//*[@id=\"app-links\"]/ul/li[9]/a";
     private final static String enterTimeWorkedLink_Xpath = "//*[@id=\"main\"]/div[6]/a";
+    private final static String confirmTimeButton_Xpath = "//*[@id=\"timeSaveOrAddId\"]";
+    private final static String cancelButton_Xpath = "//*[@id=\"addTimeWorkedForm\"]/div[6]/div[2]/button[2]";
+    private final static String continueButton_Xpath = "//*[@id=\"continueId\"]";
+    private final static String commentBox_Xpath = "//*[@id=\"comments\"]";
 
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
@@ -82,7 +86,7 @@ public class Driver {
             endTime.selectByVisibleText(String.format("%d:00 AM", hoursWorked[i]));
 
             // Add "Work" into comments
-            WebElement comment = driver.findElement(By.xpath("//*[@id=\"comments\"]"));
+            WebElement comment = driver.findElement(By.xpath());
             comment.sendKeys("Work");
 
             // Add hours
@@ -94,28 +98,28 @@ public class Driver {
             if (driver.getPageSource().contains("Time has been entered on a holiday. Is that accurate?")){
                 System.out.println("DAY IS A HOLIDAY, ADDING HOURS ANYWAY, DOUBLE CHECK BEFORE SUBMITTING");
 
-                WebElement comment_ = driver.findElement(By.xpath("//*[@id=\"comments\"]"));
+                WebElement comment_ = driver.findElement(By.xpath(commentBox_Xpath));
                 comment_.clear();
                 comment_.sendKeys("Work, HOLIDAY - MANAGER PLEASE DOUBLE CHECK WITH STUDENT");
 
-                driver.findElement(By.xpath("//*[@id=\"continueId\"]")).click();
+                driver.findElement(By.xpath()).click(continueButton_Xpath);
             }
 
             // Ten or more hours
             else if (driver.getPageSource().contains("Ten or more hours have been reported for this day.")) {
                 System.out.println("OVER 10 HOURS ENTERED, ADDING HOURS ANYWAY");
 
-                WebElement comment_ = driver.findElement(By.xpath("//*[@id=\"comments\"]"));
+                WebElement comment_ = driver.findElement(By.xpath(commentBox_Xpath));
                 comment_.clear();
                 comment_.sendKeys("Work, WORKING OVER 10 HOURS");
 
-                driver.findElement(By.xpath("//*[@id=\"continueId\"]")).click();
+                driver.findElement(By.xpath(continueButton_Xpath)).click();
             }
 
             // Overlapping hours
             else if(driver.getPageSource().contains("overlaps with an existing time")){
                 System.out.println("EXISTING TIME ALREADY ADDED, SKIPPING ADDING THIS DATE'S HOURS");
-                driver.findElement(By.xpath("//*[@id=\"addTimeWorkedForm\"]/div[6]/div[2]/button[2]")).click();
+                driver.findElement(By.xpath(cancelButton_Xpath)).click();
             }
         }
 //        // Wait 30 seconds to allow user to Certify and Submit the hours
