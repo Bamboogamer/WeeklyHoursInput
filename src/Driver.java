@@ -90,7 +90,7 @@ public class Driver {
             comment.sendKeys("Work");
 
             // Add hours
-            driver.findElement(By.xpath("//*[@id=\"timeSaveOrAddId\"]")).click();
+            driver.findElement(By.xpath(confirmTimeButton_Xpath)).click();
 
             // --- Special cases --- //
 
