@@ -27,3 +27,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+.idea/libraries/selenium_server_4_1_2.xml

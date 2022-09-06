@@ -86,7 +86,7 @@ public class Driver {
             endTime.selectByVisibleText(String.format("%d:00 AM", hoursWorked[i]));
 
             // Add "Work" into comments
-            WebElement comment = driver.findElement(By.xpath());
+            WebElement comment = driver.findElement(By.xpath(commentBox_Xpath));
             comment.sendKeys("Work");
 
             // Add hours
@@ -102,7 +102,7 @@ public class Driver {
                 comment_.clear();
                 comment_.sendKeys("Work, HOLIDAY - MANAGER PLEASE DOUBLE CHECK WITH STUDENT");
 
-                driver.findElement(By.xpath()).click(continueButton_Xpath);
+                driver.findElement(By.xpath(continueButton_Xpath)).click();
             }
 
             // Ten or more hours
