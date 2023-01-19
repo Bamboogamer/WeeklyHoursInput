@@ -8,9 +8,11 @@ public class Driver {
 
     // TODO: CHANGE THESE ==============================================================================================
     private final static String path = System.getProperty("user.dir");
-    private final static String chromeDriverPath = path + "\\driver\\chrome-driver-106.exe";
     private final static String username = "[YOUR USER HERE]";
     private final static String password = "[YOUR PASSWORD HERE]";
+    private final static String chromeDriverPath = path + "\\driver\\chrome-driver-109.exe"; // Change this
+
+    // Change your user and password below
     // TODO: CHANGE THESE ==============================================================================================
 
     private final static String loginButton_Xpath = "//*[@id=\"loginTable\"]/tbody/tr[5]/td[2]/input";
@@ -75,7 +77,7 @@ public class Driver {
              * 13 - Tuesday
              *
              * */
-            int[] daysWorked = {0, 1, 2, 5, 6, 7, 8, 9, 12, 13};
+            int[] daysWorked = {0, 1, 5, 6, 7, 8, 12, 13};
 
             //
             /* ===== Hours Worked ===== TODO: CHANGE THIS ARRAY FOR YOUR SPECIFIC SCHEDULE
@@ -85,7 +87,7 @@ public class Driver {
              * to work properly.
              *
              * */
-            int[] hoursWorked = {7, 2, 2, 7, 2, 7, 2, 2, 7, 2};
+            int[] hoursWorked = {5, 5, 5, 5, 5, 5, 5, 5};
 
             for (int i = 0; i < daysWorked.length; i++) {
 
