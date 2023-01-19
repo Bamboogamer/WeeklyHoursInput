@@ -8,11 +8,14 @@ public class Driver {
 
     // TODO: CHANGE THESE ==============================================================================================
     private final static String path = System.getProperty("user.dir");
-    private final static String username = "[YOUR USER HERE]";
-    private final static String password = "[YOUR PASSWORD HERE]";
-    private final static String chromeDriverPath = path + "\\driver\\chrome-driver-109.exe"; // Change this
+    
+    // Change this to latest chrome driver (BE SURE TO DELETE OLD DRIVER in the driver 
+    // directory, and replace it with the new one)
+    private final static String chromeDriverPath = path + "\\driver\\chrome-driver-109.exe";
 
     // Change your user and password below
+    private final static String username = "[YOUR USER HERE]";
+    private final static String password = "[YOUR PASSWORD HERE]";
     // TODO: CHANGE THESE ==============================================================================================
 
     private final static String loginButton_Xpath = "//*[@id=\"loginTable\"]/tbody/tr[5]/td[2]/input";
