@@ -9,7 +9,7 @@ public class Driver {
     // TODO: CHANGE THESE ==============================================================================================
     private final static String path = System.getProperty("user.dir");
     
-    // Change this to latest chrome driver (BE SURE TO DELETE OLD DRIVER in the driver 
+    // Change this to the latest chrome driver (BE SURE TO DELETE OLD DRIVER in the driver
     // directory, and replace it with the new one)
     private final static String chromeDriverPath = path + "\\driver\\chrome-driver-109.exe";
 
