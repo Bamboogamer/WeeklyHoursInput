@@ -80,7 +80,10 @@ public class Driver {
              * 13 - Tuesday
              *
              * */
-            int[] daysWorked = {0, 1, 5, 6, 7, 8, 12, 13};
+            int[] daysWorked = {
+                    0, 1, 5, 6,
+                    7, 8, 12, 13
+            };
 
             //
             /* ===== Hours Worked ===== TODO: CHANGE THIS ARRAY FOR YOUR SPECIFIC SCHEDULE
@@ -90,7 +93,11 @@ public class Driver {
              * to work properly.
              *
              * */
-            int[] hoursWorked = {5, 5, 5, 5, 5, 5, 5, 5};
+            int[] hoursWorked = {
+                    6, 4, 6, 4,
+                    6, 4, 6, 4
+            };
+
 
             for (int i = 0; i < daysWorked.length; i++) {
 
