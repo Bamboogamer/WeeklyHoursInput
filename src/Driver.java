@@ -2,17 +2,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class Driver {
 
     // TODO: CHANGE THESE ==============================================================================================
-    private final static String path = System.getProperty("user.dir");
+    private final static String path = System.getProperty("user.dir") + "\\driver\\";
     
     // Change this to the latest chrome driver (BE SURE TO DELETE OLD DRIVER in the driver
     // directory, and replace it with the new one)
-    private final static String chromeDriverPath = path + "\\driver\\chrome-driver-109.exe";
-
+    private final static String chromeDriverPath = path + "chrome-driver-111.exe";
+    private final static String edgeDriverPath = path + "ms-edgedriver-110.exe";
     // Change your user and password below
     private final static String username = "[YOUR USER HERE]";
     private final static String password = "[YOUR PASSWORD HERE]";
@@ -36,8 +37,9 @@ public class Driver {
 
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+        System.setProperty("webdriver.edge.driver", edgeDriverPath);
         // Instantiate a ChromeDriver class.
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new EdgeDriver();
 
         try {// Maximize the browser
             driver.manage().window().maximize();
