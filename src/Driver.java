@@ -45,7 +45,7 @@ public class Driver {
             driver.manage().window().maximize();
 
             // Launch Website
-            driver.get("https://eservices.minnstate.edu/student-portal/secure/dashboard.do?campusid=071&tokenTicket=%2FihrQ4QFMipD59hq2iKURiDLV3MB");
+            driver.get("https://eservices.minnstate.edu/student-portal/secure/dashboard.do?campusid=071");
 
             // Log into E-services
             WebElement user = driver.findElement(By.xpath("//*[@id=\"userName\"]"));
